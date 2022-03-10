@@ -22,13 +22,7 @@ The current implementation simulates connecting to an WebSocket and generating a
 
 The Worker would continuously stream and collect the data, even if the RRBF or Call/Put UI component is unmounted, and when they mount back the most recent 40 rows would be displayed. This again is controlled by const MAX_FRAME_SIZE in worker file. As 1ms is a small time for user to be able to discern, so a pragmatic approach would be to only keep the most recent MAX_FRAME_SIZE rows in memory. Also the assingment implies the WebScoket streams the rows, any stream implies use of buffer implicitly, MAX_FRAME_SIZE in this case would be the size of buffer.
 
-RRBF_WORKER           CALL_PUT_WORKER
-
-WebSocket1            WebSocket2
-
-UI Updates Frames
-
-React UI
+![Final Demo](./previews/Flow.png)
 
 Doing this above approach, the UI remains responsive
 
