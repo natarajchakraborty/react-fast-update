@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background-color:rgb(17,28,69);
+  color: white;
 }
 
 .App-logo {
@@ -35,4 +37,44 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.Appul {
+  list-style: none;
+  padding-top: 30px;
+}
+
+.Appul > li {
+  display: inline-block;
+  padding: 10px 30px 10px 30px;
+  border: solid 1px white;
+}
+
+.Appul > li:hover{
+  background-color: #61dafb;
+  cursor: pointer;
+}
+
+.li-selected{
+  background-color: #61dafb;
+  cursor: pointer;
+}
+
+.li-unselected{
+  background-color: rgb(17,28,69);
+  cursor: pointer;
+}
+
+.table {
+  margin: auto;
+}
+
+.table > tr > th {
+  padding: 10px 25px 10px 25px;
+  border: solid 1px white;
+}
+
+.table > tr > th {
+  padding: 10px 25px 10px 25px;
+  border: solid 1px white;
 }
