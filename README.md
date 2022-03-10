@@ -2,7 +2,7 @@
 
 Create following template/UI in reactjs
 
-![UI](./preview/desktop-preview.png)
+![UI](./preview/screen.png)
 
 UI should make two websocket connection with backend (first websocket connection to fetch data for RR/BF table tab and second websocket connection to fetch data for Call/Put table).
 When user clicks on RR/BF table, ui should fetch data from backend at 1000 packets/second and it should be displayed over RR/BF Table tab. Backend should continue streaming the data to ui at same rate even after user switched to another tab. When user clicks on Call/Put table, ui should fetch data from backend at 1000 packets/second and it should be displayed over Call/Put Table. Backend should stream the
