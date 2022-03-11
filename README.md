@@ -27,6 +27,10 @@ The Worker would continuously buffer the data from stream, even if the RRBF or C
 
 Doing this above approach, the UI remains responsive
 
+## Dependenciies
+
+For loading and working with WebWorkers: https://github.com/zonayedpca/react-web-workers
+
 ## Available Scripts
 
 In the project directory, you can run:
