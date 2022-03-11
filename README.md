@@ -1,7 +1,5 @@
 ## Introduction
 
-Create following template/UI in reactjs
-
 ![UI](./previews/screen.png)
 
 Usually to let the UI responsive, the computation on UI thread should be done to a mimimal. Any long running task if handled in the UI would result in Jank or unresponsivness UI. Lets consider the below scenerio, where the App receives streaming data from two seperate WebScoket connection at a very fast rate. How do I ensure to keep the UI responsive beside being able to handle all these data and use the data to also derive the UI.
