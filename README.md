@@ -2,7 +2,7 @@
 
 ![UI](./previews/screen.png)
 
-Usually to let the UI responsive, the computation on UI thread should be done to a mimimal. Any long running task if handled in the UI would result in Jank or unresponsivness UI. Lets consider the below scenerio, where the App receives streaming data from two seperate WebScoket connection at a very fast rate. How do I ensure to keep the UI responsive beside being able to handle all these data and use the data to also derive the UI.
+Usually to keep the UI responsive, the computation on UI thread should be done to a mimimal. Any long running task if handled in the UI would result in Jank or unresponsivness UI. Lets consider the below scenerio, where the App receives streaming data from two seperate WebScoket connection at a very fast rate. How do I ensure to keep the UI responsive beside being able to handle all these data and use the data to also derive the UI.
 
 In the above screenshot UI would make two websocket connection with backend (first websocket connection to fetch data for RR/BF table tab and second websocket connection to fetch data for Call/Put table).
 When user clicks on RR/BF table, ui would fetch data from backend at 1000 packets/second and it would be displayed over RR/BF Table tab. Backend will continue to stream the data to ui at same rate even after user has switched to another tab. When user clicks on Call/Put table, ui would fetch data from backend at 1000 packets/second and it should be displayed over Call/Put Table. Backend should stream the
