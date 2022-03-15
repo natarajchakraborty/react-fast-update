@@ -1,5 +1,5 @@
 import './App.css';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import WebWorker from 'react-web-workers'
 import Worker1 from './Workers/rrbf_worker';
 import Worker2 from './Workers/callput_worker';
@@ -35,27 +35,22 @@ function App() {
     const [rrbf_worker] = new WebWorker([Worker1]);
     rrbf_worker.postMessage('Start');
     rrbf_worker.onmessage = ({ data }) => {
-          console.log('Message from Workers: ', data);
+         // console.log('Message from Workers: ', data);
           // buffer it
-          setRRBFRows(data);
+          setRRBFRows(data); // every 400 ms, after first frame milliseconds
       };
+      const [callput_worker] = new WebWorker([Worker2]);
+      callput_worker.postMessage('Start');
+      callput_worker.onmessage = ({ data }) => {
+            //console.log('Message from Workers: ', data);
+            // buffer it
+            setCallPutRows(data);
+        };
       return () => {
         if(rrbf_worker){
           rrbf_worker.postMessage('End');
           rrbf_worker.terminate();
         }
-      }
-  }, []);
-
-  useEffect(() => {
-    const [callput_worker] = new WebWorker([Worker2]);
-    callput_worker.postMessage('Start');
-    callput_worker.onmessage = ({ data }) => {
-          console.log('Message from Workers: ', data);
-          // buffer it
-          setCallPutRows(data);
-      };
-      return () => {
         if(callput_worker){
           callput_worker.postMessage('End');
           callput_worker.terminate();
@@ -63,7 +58,7 @@ function App() {
       }
   }, []);
 
-  const renderTableComponents = () => {
+  const renderTableComponents = useCallback(() => {
     switch(tab) {
       case 0: 
         return (<RRBF rows={rrbfrows}></RRBF>);
@@ -81,7 +76,11 @@ function App() {
           return (<Heatmaps></Heatmaps>);
           break;
     }
-  }
+  });
+
+  const onClick =  useCallback((idx) => {
+    setTab(idx)
+  })
   // render tabs and corresponding rows
   return (
     <div className="App">
@@ -99,6 +98,7 @@ function App() {
           <th>25d B/F</th>
           <th>10d B/F</th>
         </tr>
+        {/* <Table tab={tab} rrbfrows={rrbfrows} callPutrows={callPutrows}/> */}
         {renderTableComponents()}
       </table>
     </div>
